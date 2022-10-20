@@ -14,30 +14,31 @@ if (isset($_SESSION["UTILIZADOR"])) {
     <?php
 	$api_url = 'https://newsapi.org/v2/top-headlines?country=pt&category=business&apiKey=bd9e433c9a984bda8779f205a5e27c5e';
 	$json = file_get_contents($api_url);
-	echo $json;
-    $json = json_decode($json);
-    $pageMax = 5;
-	$pageNow = 0;
-    if (isset($_POST['next'])) {
-        $next = (int)$_POST['next'];
-        $prev = $next - 1;
-        $pageMin = $prev * $pageMax;
-        $pageNow = $next * $pageMax;
-    } elseif (isset($_POST['back'])) {
-        $next = (int)$_POST['back'];
-        $prev = $next - 1;
-        $pageMin = $prev * $pageMax;
-        $pageNow = $next * $pageMax;
-    } else {
-        $next = 1;
-        $prev = 0;
-        $pageMin = 0;
-        $pageNow = 5;
-    }
-    if ($pageNow > count($json->articles)) {
-        $pageNow = count($json->articles);
-    }
-    ?>
+	if($json){
+		echo $json;
+		$json = json_decode($json);
+		$pageMax = 5;
+		$pageNow = 0;
+		if (isset($_POST['next'])) {
+			$next = (int)$_POST['next'];
+			$prev = $next - 1;
+			$pageMin = $prev * $pageMax;
+			$pageNow = $next * $pageMax;
+		} elseif (isset($_POST['back'])) {
+			$next = (int)$_POST['back'];
+			$prev = $next - 1;
+			$pageMin = $prev * $pageMax;
+			$pageNow = $next * $pageMax;
+		} else {
+			$next = 1;
+			$prev = 0;
+			$pageMin = 0;
+			$pageNow = 5;
+		}
+		if ($pageNow > count($json->articles)) {
+			$pageNow = count($json->articles);
+		}
+	?>
     <div class="container mt-4">
         <div class="row justify-content-center align-items-center">
             <div class="col-8 text-center border-bottom">
@@ -109,4 +110,13 @@ if (isset($_SESSION["UTILIZADOR"])) {
             </div>
         </div>
     </div>
+	<?php }else{ ?>
+		<div class="container mt-4">
+		<div class="row justify-content-center align-items-center">
+			<div class="col-8 text-center border-bottom">
+				<h1 class="h2">No data found!</h1>
+			</div>
+		</div>
+	</div>
+	<?php } ?>
 <?php } ?>
