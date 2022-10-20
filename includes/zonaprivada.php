@@ -1,3 +1,4 @@
+
 <?php
 if (isset($_SESSION["UTILIZADOR"])) {
 ?>
@@ -16,9 +17,8 @@ if (isset($_SESSION["UTILIZADOR"])) {
 
     <?php
     $json = file_get_contents('https://newsapi.org/v2/top-headlines?country=pt&category=business&apiKey=bd9e433c9a984bda8779f205a5e27c5e');
-	echo "<h1>$json</h1>";
+	echo $json;
     $json = json_decode($json);
-	echo "<h1>$json</h1>";
     $pageMax = 5;
     if (isset($_POST['next'])) {
         $next = (int)$_POST['next'];
