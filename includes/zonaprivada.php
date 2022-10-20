@@ -17,28 +17,33 @@ if (isset($_SESSION["UTILIZADOR"])) {
 
     <?php
     $json = file_get_contents('https://newsapi.org/v2/top-headlines?country=pt&category=business&apiKey=bd9e433c9a984bda8779f205a5e27c5e');
-	echo $json;
     $json = json_decode($json);
+	echo 1;
     $pageMax = 5;
     if (isset($_POST['next'])) {
+		echo 2;
         $next = (int)$_POST['next'];
         $prev = $next - 1;
         $pageMin = $prev * $pageMax;
         $pageNow = $next * $pageMax;
     } elseif (isset($_POST['back'])) {
+		echo 3;
         $next = (int)$_POST['back'];
         $prev = $next - 1;
         $pageMin = $prev * $pageMax;
         $pageNow = $next * $pageMax;
     } else {
+		echo 4;
         $next = 1;
         $prev = 0;
         $pageMin = 0;
         $pageNow = 5;
     }
+	echo 5;
     if ($pageNow > count($json->articles)) {
         $pageNow = count($json->articles);
     }
+	echo 6;
     ?>
 	<h1> Oi2</h1>
     <div class="container mt-4">
