@@ -15,6 +15,7 @@ if (isset($_SESSION["UTILIZADOR"])) {
     $json = file_get_contents('https://newsapi.org/v2/top-headlines?country=pt&category=business&apiKey=bd9e433c9a984bda8779f205a5e27c5e');
     $json = json_decode($json);
     $pageMax = 5;
+	echo $json;
     if (isset($_POST['next'])) {
         $next = (int)$_POST['next'];
         $prev = $next - 1;
