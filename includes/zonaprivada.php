@@ -2,8 +2,6 @@
 <?php
 if (isset($_SESSION["UTILIZADOR"])) {
 ?>
-	<h1> Hello</h1>
-
     <div class="container-fluid">
         <div class="row">
             <?php
@@ -13,8 +11,6 @@ if (isset($_SESSION["UTILIZADOR"])) {
         </div>
     </div>
 <?php } else { ?>
-	<h1> Oi</h1>
-
     <?php
     $json = file_get_contents('https://newsapi.org/v2/top-headlines?country=pt&category=business&apiKey=bd9e433c9a984bda8779f205a5e27c5e');
     $json = json_decode($json);
@@ -39,7 +35,6 @@ if (isset($_SESSION["UTILIZADOR"])) {
         $pageNow = count($json->articles);
     }
     ?>
-	<h1> Oi2</h1>
     <div class="container mt-4">
         <div class="row justify-content-center align-items-center">
             <div class="col-8 text-center border-bottom">
