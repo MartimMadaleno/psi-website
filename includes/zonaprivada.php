@@ -20,6 +20,7 @@ if (isset($_SESSION["UTILIZADOR"])) {
     $json = json_decode($json);
 	echo 1;
     $pageMax = 5;
+	$pageNow = 0;
     if (isset($_POST['next'])) {
 		echo 2;
         $next = (int)$_POST['next'];
