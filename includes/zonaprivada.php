@@ -17,6 +17,7 @@ if (isset($_SESSION["UTILIZADOR"])) {
 
     <?php
     $json = file_get_contents('https://newsapi.org/v2/top-headlines?country=pt&category=business&apiKey=bd9e433c9a984bda8779f205a5e27c5e');
+	echo $json;
     $json = json_decode($json);
 	echo 1;
     $pageMax = 5;
