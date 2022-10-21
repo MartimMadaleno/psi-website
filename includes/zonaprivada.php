@@ -13,8 +13,13 @@ if (isset($_SESSION["UTILIZADOR"])) {
 <?php } else { ?>
     <?php
 	$api_url = 'https://newsapi.org/v2/top-headlines?country=pt&category=business&apiKey=bd9e433c9a984bda8779f205a5e27c5e';
+	$curl_handle = curl_init();
+	curl_setopt($curl_handle, CURLOPT_URL, $api_url);
+	$api_data = curl_exec($handle);
+	// $json = file_get_contents($api_url);
 	$json = file_get_contents($api_url);
 	if(!empty($json)){
+		curl_close($curl_handle);
 		$json = json_decode($json);
 		$pageMax = 5;
 		$pageNow = 0;
@@ -109,7 +114,8 @@ if (isset($_SESSION["UTILIZADOR"])) {
             </div>
         </div>
     </div>
-	<?php }else{ ?>
+	<?php }else{ curl_close($curl_handle);?>
+		
 		<div class="container mt-4">
 		<div class="row justify-content-center align-items-center">
 			<div class="col-8 text-center border-bottom">
