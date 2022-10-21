@@ -19,15 +19,15 @@ if (isset($_SESSION["UTILIZADOR"])) {
     curl_setopt($ch, CURLOPT_URL,$api_url);
     // curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
     curl_setopt($ch, CURLOPT_USERAGENT, $userAgent);
-	curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     // curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
     // curl_setopt($ch, CURLOPT_TIMEOUT, 60);
     // curl_setopt ($ch, CURLOPT_HEADER, 0);
     $json = curl_exec($ch);
 	curl_close($ch);
 	if(!empty($json)){ 
-		echo "<br>_______________________________________________________________________________________________________<br>";
-		echo $json;
+		// echo "<br>_______________________________________________________________________________________________________<br>";
+		// echo $json;
 		$json = json_decode($json);
 		$pageMax = 5;
 		$pageNow = 0;
