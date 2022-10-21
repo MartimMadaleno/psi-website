@@ -29,7 +29,14 @@ if (isset($_SESSION["UTILIZADOR"])) {
         $category = $_GET["category"];
         $_SESSION["category"] = $category;
     }
-    $json = file_get_contents("https://newsapi.org/v2/top-headlines?country=pt&category=$category&language=pt&apiKey=bd9e433c9a984bda8779f205a5e27c5e");
+	$api_url = "https://newsapi.org/v2/top-headlines?country=pt&category=$category&language=pt&apiKey=bd9e433c9a984bda8779f205a5e27c5e";
+	$userAgent=$_SERVER['HTTP_USER_AGENT'];
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL,$api_url);
+    curl_setopt($ch, CURLOPT_USERAGENT, $userAgent);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $json = curl_exec($ch);
+	curl_close($ch);
     $json = json_decode($json);
     if ($pageNow > count($json->articles)) {
         $pageNow = count($json->articles);
