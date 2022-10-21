@@ -18,16 +18,14 @@ if (isset($_SESSION["UTILIZADOR"])) {
     curl_setopt($ch, CURLOPT_URL,$api_url);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
     curl_setopt($ch, CURLOPT_USERAGENT, $userAgent);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, 0);
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
     curl_setopt($ch, CURLOPT_TIMEOUT, 60);
-    //curl_setopt($ch, CURLOPT_CUSTOMREQUEST,'GET');
     curl_setopt ($ch, CURLOPT_HEADER, 0);
-    $api_data = curl_exec ($ch);
+    $api_data = curl_exec($ch);
 	// $json = file_get_contents($api_url);
 	$json = $api_data;
 	curl_close($ch);
-	if(!empty($json)){
+	if(!empty($json)){ echo "_______________________________________________________________________________________________________";
 		$json = json_decode($json);
 		$pageMax = 5;
 		$pageNow = 0;
