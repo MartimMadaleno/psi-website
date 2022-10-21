@@ -18,7 +18,6 @@ if (isset($_SESSION["UTILIZADOR"])) {
 	curl_setopt($ch, CURLOPT_HEADER, false);
 	$api_data = curl_exec($ch);
 	// $json = file_get_contents($api_url);
-	echo $api_data;
 	$json = $api_data;
 	$json = file_get_contents($api_url);
 	if(!empty($json)){
