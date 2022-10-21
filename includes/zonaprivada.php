@@ -13,10 +13,11 @@ if (isset($_SESSION["UTILIZADOR"])) {
 <?php } else { ?>
     <?php
 	$api_url = 'http://newsapi.org/v2/top-headlines?country=pt&category=business&apiKey=bd9e433c9a984bda8779f205a5e27c5e';
+	$userAgent=$_SERVER['HTTP_USER_AGENT'];
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL,$api_url);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-    curl_setopt($ch, CURLOPT_USERAGENT, "booyah!");
+    curl_setopt($ch, CURLOPT_USERAGENT, $userAgent);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, 0);
     curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
     curl_setopt($ch, CURLOPT_TIMEOUT, 60);
