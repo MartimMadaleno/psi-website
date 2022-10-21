@@ -27,8 +27,8 @@ if (isset($_SESSION["UTILIZADOR"])) {
 	curl_close($ch);
 	if(!empty($json)){ 
 		echo "<br>_______________________________________________________________________________________________________<br>";
-		$json = json_decode($json);
 		echo $json;
+		$json = json_decode($json);
 		$pageMax = 5;
 		$pageNow = 0;
 		if (isset($_POST['next'])) {
