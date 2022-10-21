@@ -291,11 +291,12 @@ mysqli_free_result($resultadoTotal);
 ?>
 <!DOCTYPE html>
 <html>
-<title>Cloud Gallery - Gerir utilizadores</title>
+<title>StockTravel - Gerir utilizadores</title>
 <?php include_once  './includes/estilos.php'; ?>
 <body>
 <?php include_once  './includes/menus.php'; ?>
- 
+<?php include_once './includes/sidenav.php'; ?> 
+
 <i  id="ancoraTopo"></i>
 
 <div class="w3-container w3-light-grey" style="padding:128px 16px">
@@ -431,9 +432,6 @@ mysqli_free_result($resultadoTotal);
         
 </div>
 
-<?php include_once  './includes/zonaprivada.php'; ?>
-<!--  -->
-<?php include_once  './includes/rodape.php'; ?>
 <?php include_once  './includes/scripts.php'; ?>
 </body>
 </html>

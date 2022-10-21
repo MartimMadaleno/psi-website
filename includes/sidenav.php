@@ -4,6 +4,18 @@
     if(strpos($uri, "news")){
         $inLink = "news";
     }
+    if(strpos($uri, "userEditarConta")){
+        $inLink = "userEditarConta";
+    }
+    if(strpos($uri, "favorite")){
+        $inLink = "favorite";
+    }
+    if(strpos($uri, "userRecuperarSenha")){
+        $inLink = "userEditarConta";
+    }
+    if(strpos($uri, "userCancelarConta")){
+        $inLink = "userEditarConta";
+    }
 ?>
 
 <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
@@ -31,24 +43,28 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link <?php if ($inLink == "favorite" ) { echo " active"; } ?>" href="#">
+                <a class="nav-link <?php if ($inLink == "favorite" ) { echo " active"; } ?>" href="./favorite.php">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity">
                         <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
                     </svg>
                     Favoritos
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link <?php if ($inLink == "userGerirUtilizadores" ) { echo " active"; } ?>" href="./userGerirUtilizadores.php">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity">
-                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                        <circle cx="9" cy="7" r="4"></circle>
-                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                    </svg>
-                    Gerir Utilizadores
-                </a>
-            </li>
+            <?php if (isset($_SESSION["NIVEL_UTILIZADOR"])) { ?>
+                <?php if ($_SESSION["NIVEL_UTILIZADOR"]==2 ) { ?>
+                        <li class="nav-item">
+                            <a class="nav-link <?php if ($inLink == "userGerirUtilizadores" ) { echo " active"; } ?>" href="./userGerirUtilizadores.php">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity">
+                                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                    <circle cx="9" cy="7" r="4"></circle>
+                                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                                </svg>
+                                Gerir Utilizadores
+                            </a>
+                        </li>
+                <?php } ?>
+            <?php } ?>
             <li class="nav-item">
                 <a class="nav-link <?php if ($inLink == "userEditarConta" ) { echo " active"; } ?>" href="./userEditarConta.php">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity">

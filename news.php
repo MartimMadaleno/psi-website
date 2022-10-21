@@ -1,8 +1,6 @@
 <?php
 session_start();
 if (isset($_SESSION["UTILIZADOR"])) {
-
-
     $pageMax = 5;
     if (isset($_POST['next'])) {
         $next = (int)$_POST['next'];
@@ -47,6 +45,7 @@ if (isset($_SESSION["UTILIZADOR"])) {
     <?php include_once  './includes/estilos.php'; ?>
     <?php include_once './includes/sidenav.php'; ?>
     <?php include_once  './includes/menus.php'; ?>
+    <title>StockTravel - Notícias</title>
     <div class="container mt-4">
         <div class="row justify-content-center">
             <div class="col-6">
@@ -54,7 +53,6 @@ if (isset($_SESSION["UTILIZADOR"])) {
                     <div class="col-8">
                         <h2 class="h2 text-center">Notícias | <?php echo $categoryTitle ?></h2>
                     </div>
-
                 </div>
                 <div class="row justify-content-end border-bottom">
                     <div class="col-3">
@@ -78,7 +76,6 @@ if (isset($_SESSION["UTILIZADOR"])) {
                 </div>
             </div>
         </div>
-
         <?php for ($i = $pageMin; $i < $pageNow; $i++) { ?>
             <?php $new = $json->articles[$i]; ?>
             <?php
@@ -118,26 +115,16 @@ if (isset($_SESSION["UTILIZADOR"])) {
             <div class="col-8 d-flex justify-content-center">
                 <form action="" method="POST">
                     <ul class="pagination">
-
                         <?php if ($pageMin == 0) { ?>
-
                             <li class="page-item disabled"><button class="page-link" name="back">Previous</button></li>
-
                         <?php } else { ?>
-
                             <li class="page-item"><button type="submit" value="<?php echo $next - 1 ?>" class="page-link" name="back">Previous</button></li>
-
                         <?php } ?>
                         <?php if ($pageNow >= count($json->articles)) { ?>
-
                             <li class="page-item disabled"><button class="page-link" name="next">Next</button></li>
-
                         <?php } else { ?>
-
                             <li class="page-item"><button type="submit" value="<?php echo $next + 1 ?>" class="page-link" name="next">Next</button></li>
-
                         <?php } ?>
-
                     </ul>
                 </form>
             </div>
