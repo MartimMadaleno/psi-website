@@ -15,7 +15,7 @@ if (isset($_SESSION["UTILIZADOR"])) {
 	$api_url = 'http://newsapi.org/v2/top-headlines?country=pt&category=business&apiKey=bd9e433c9a984bda8779f205a5e27c5e';
 	$ch = curl_init();
 	curl_setopt($ch, CURLOPT_URL, $api_url);
-	curl_setopt($ch, CURLOPT_HEADER, false);
+	// curl_setopt($ch, CURLOPT_HEADER, false);
 	$api_data = curl_exec($ch);
 	// $json = file_get_contents($api_url);
 	$json = $api_data;
