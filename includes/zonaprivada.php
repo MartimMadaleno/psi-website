@@ -12,7 +12,6 @@ if (isset($_SESSION["UTILIZADOR"])) {
     </div>
 <?php } else { ?>
     <?php
-	echo 1;
 	$api_url = 'http://newsapi.org/v2/top-headlines?country=pt&category=business&apiKey=bd9e433c9a984bda8779f205a5e27c5e';
 	$userAgent=$_SERVER['HTTP_USER_AGENT'];
     $ch = curl_init();
