@@ -13,20 +13,21 @@ if (isset($_SESSION["UTILIZADOR"])) {
 <?php } else { ?>
     <?php
 	$api_url = 'http://newsapi.org/v2/top-headlines?country=pt&category=business&apiKey=bd9e433c9a984bda8779f205a5e27c5e';
+	// $json = file_get_contents($api_url);
 	$userAgent=$_SERVER['HTTP_USER_AGENT'];
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL,$api_url);
-    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+    // curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
     curl_setopt($ch, CURLOPT_USERAGENT, $userAgent);
-    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
-    curl_setopt($ch, CURLOPT_TIMEOUT, 60);
-    curl_setopt ($ch, CURLOPT_HEADER, 0);
+	curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, true);
+    // curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
+    // curl_setopt($ch, CURLOPT_TIMEOUT, 60);
+    // curl_setopt ($ch, CURLOPT_HEADER, 0);
     $api_data = curl_exec($ch);
-	// $json = file_get_contents($api_url);
-	$json = $api_data;
 	curl_close($ch);
-	if(!empty($json)){ echo "_______________________________________________________________________________________________________";
-		$json = json_decode($json);
+	if(!empty($json)){ 
+		echo "_______________________________________________________________________________________________________";
+		$json = json_decode($api_data);
 		$pageMax = 5;
 		$pageNow = 0;
 		if (isset($_POST['next'])) {
