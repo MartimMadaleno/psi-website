@@ -23,11 +23,11 @@ if (isset($_SESSION["UTILIZADOR"])) {
     // curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 2);
     // curl_setopt($ch, CURLOPT_TIMEOUT, 60);
     // curl_setopt ($ch, CURLOPT_HEADER, 0);
-    $api_data = curl_exec($ch);
+    $json = curl_exec($ch);
 	curl_close($ch);
 	if(!empty($json)){ 
 		echo "_______________________________________________________________________________________________________";
-		$json = json_decode($api_data);
+		$json = json_decode($json);
 		$pageMax = 5;
 		$pageNow = 0;
 		if (isset($_POST['next'])) {
