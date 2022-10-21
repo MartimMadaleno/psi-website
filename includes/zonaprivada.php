@@ -19,9 +19,8 @@ if (isset($_SESSION["UTILIZADOR"])) {
 	$api_data = curl_exec($ch);
 	// $json = file_get_contents($api_url);
 	$json = $api_data;
-	$json = file_get_contents($api_url);
+	curl_close($ch);
 	if(!empty($json)){
-		curl_close($ch);
 		$json = json_decode($json);
 		$pageMax = 5;
 		$pageNow = 0;
@@ -116,8 +115,7 @@ if (isset($_SESSION["UTILIZADOR"])) {
             </div>
         </div>
     </div>
-	<?php }else{ curl_close($ch);?>
-		
+	<?php }else{ ?>
 		<div class="container mt-4">
 		<div class="row justify-content-center align-items-center">
 			<div class="col-8 text-center border-bottom">
